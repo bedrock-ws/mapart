@@ -41,4 +41,4 @@ and `--port` (e.g. `mapart --host localhost --port 8000 share`).
 > [!TIP]
 > To achieve good results make sure the entire area that should be filled with
 > blocks is loaded. This can be done by adding ticking areas with the
-> `tickingarea` Minecraft command or by placing another placer in that area.
+> `tickingarea` Minecraft command or by placing another place in that area.

@@ -38,7 +38,7 @@ and `--port` (e.g. `mapart --host localhost --port 8000 share`).
 7. Goto the bottom left position visible on the map.
 8. Generate the map art with `#path/to/image.png`
 
-> ![TIP]
+> [!TIP]
 > To achieve good results make sure the entire area that should be filled with
 > blocks is loaded. This can be done by adding ticking areas with the
 > `tickingarea` Minecraft command or by placing another placer in that area.

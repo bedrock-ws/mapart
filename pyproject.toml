@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "mapart"
+version = "0.1.0"
+description = "Create map arts in Minecraft BE worlds"
+authors = ["Jonas da Silva <phoenixr41414141@gmail.com>"]
+maintainers = ["Jonas da Silva <phoenixr41414141@gmail.com>"]
+license = "Unlicense"
+readme = "README.md"
+repository = "https://github.com/bedrock-ws/mapart.git"
+keywords = ["minecraft", "pixelart", "art"]
+classifiers = [
+  "Private :: Do Not Upload",
+  "Development Status :: 6 - Mature",
+  "Environment :: Console",
+  "Intended Audience :: Education",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: The Unlicense (Unlicense)",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Artistic Software",
+  "Topic :: Education",
+  "Topic :: Games/Entertainment",
+  "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+bedrockpy = "^1.0.0"
+click = "^8.1.7"
+pillow = "^10.3.0"
+adorable = "^0.1.5"
+rgbmatch = "^0.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

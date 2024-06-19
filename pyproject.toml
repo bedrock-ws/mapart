@@ -26,6 +26,9 @@ classifiers = [
   "Typing :: Typed",
 ]
 
+[tool.poetry.scripts]
+mapart = "mapart.__main__:app"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 bedrockpy = "^1.0.0"

@@ -22,7 +22,7 @@ can use `#foo/bar/image.png` which would "print" the image located at
 `share/foo/bar/image.png` into the Minecraft world.
 
 You can override the address and port with their appropiate flags `--address`
-and `--port` (e.g. `mapart --host localhost --port 8000 share`).
+and `--port` (e.g. `mapart --address localhost --port 8000 share`).
 
 
 ## Tutorial

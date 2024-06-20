@@ -59,8 +59,11 @@ def launch(address: str, port: int, root_dir: Path) -> None:
         if not path.exists():
             await ctx.reply(ui.red("Error: The provided path does not exist"))
             return
+        if not path.is_file():
+            await ctx.reply(ui.red("Error: The provided points to a path"))
+            return
 
-        im = Image.open(path)
+        im = Image.open(path).convert("RGB")
         if not quadratic(im):
             im = square_image(im)
         im = pixelate(im)

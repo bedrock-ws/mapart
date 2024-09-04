@@ -35,7 +35,7 @@ and `--port` (e.g. `mapart --address localhost --port 8000 share`).
 5. Go to an area in your Minecraft world that is far away from your beloved
    creations.
 6. Create a map.
-7. Goto the bottom left position visible on the map.
+7. Goto the top left position visible on the map.
 8. Generate the map art with `#path/to/image.png`
 
 > [!TIP]

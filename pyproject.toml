@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mapart"
-version = "0.2.0"
+version = "0.2.1"
 description = "Create map arts in Minecraft BE worlds"
 authors = ["Jonas da Silva <phoenixr41414141@gmail.com>"]
 maintainers = ["Jonas da Silva <phoenixr41414141@gmail.com>"]

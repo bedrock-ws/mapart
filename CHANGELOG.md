@@ -1,6 +1,13 @@
 # Changelog
 
-## [0.2.0][] - 2023-09-27
+## [0.2.1][] - 2024-09-27
+
+### Changes
+
+- 🗑️ Removed concrete powder from "closest" palette.
+
+
+## [0.2.0][] - 2024-09-27
 
 ### Added
 
@@ -26,6 +33,7 @@
 Initial release
 
 
+[0.2.0]: https://github.com/bedrock-ws/mapart/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/bedrock-ws/mapart/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/bedrock-ws/mapart/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/bedrock-ws/mapart/compare/v0.1.0...v0.1.1

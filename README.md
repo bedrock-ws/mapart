@@ -24,6 +24,9 @@ can use `#foo/bar/image.png` which would "print" the image located at
 You can override the address and port with their appropiate flags `--address`
 and `--port` (e.g. `mapart --address localhost --port 8000 share`).
 
+The `--palette` flag can be used to set the block palette. For example certain
+blocks represent a different color on a map. `closest` is optimal for pixel
+arts and `map` (default) is optimal for map arts.
 
 ## Tutorial
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0][] - 2023-09-27
+
+### Added
+
+- 🎨 Added palette optimal for pixel arts.
+
+
 ## [0.1.2][] - 2024-06-20
 
 ### Changes
@@ -19,6 +26,7 @@
 Initial release
 
 
+[0.2.0]: https://github.com/bedrock-ws/mapart/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/bedrock-ws/mapart/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/bedrock-ws/mapart/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/bedrock-ws/mapart/releases/v0.1.0

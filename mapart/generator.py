@@ -14,7 +14,6 @@ from . import palettes
 ImageType = Image.Image
 
 PREFIX = "#"
-PALETTE = palettes.DETAILED_MAP
 RED = adorable.Color8bit.from_name("red")
 BLUE = adorable.Color8bit.from_name("blue")
 YELLOW = adorable.Color8bit.from_name("yellow")
@@ -36,7 +35,15 @@ def square_image(im: ImageType):
     return bg
 
 
-def launch(address: str, port: int, root_dir: Path) -> None:
+def launch(address: str, port: int, palette_id: str, root_dir: Path) -> None:
+    match palette_id:
+        case "map":
+            palette = palettes.DETAILED_MAP
+        case "closest":
+            palette = palettes.DETAILED_STATIC
+        case _:
+            raise Exception("unreachable")
+    
     server = Server()
 
     @server.server_event
@@ -71,8 +78,8 @@ def launch(address: str, port: int, root_dir: Path) -> None:
         await ctx.server.run(f"inputpermission set {ctx.sender} movement disabled")
         x = z = 1
         for (r, g, b) in im.getdata():
-            closest_rgb = rgbmatch.closest_rgb((r, g, b), PALETTE.keys())
-            block = PALETTE[closest_rgb]
+            closest_rgb = rgbmatch.closest_rgb((r, g, b), palette.keys())
+            block = palette[closest_rgb]
             await ctx.server.run(
                 f"setblock ~{x - 1} ~-1 ~{z - 1} {block}",
                 wait=False

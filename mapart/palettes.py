@@ -75,7 +75,7 @@ DETAILED_STATIC: Final = {
     (214, 101, 143): "pink_concrete []",
     (100, 32, 156): "purple_concrete []",
     (142, 33, 33): "red_concrete []",
-    (125, 125, 115): "silver_concrete []",
+    (125, 125, 115): "light_gray_concrete []",
     (207, 213, 214): "white_concrete []",
     (241, 175, 21): "yellow_concrete []",
     (156, 87, 57): "copper_bulb []",
@@ -123,7 +123,7 @@ DETAILED_STATIC: Final = {
     (162, 78, 79): "pink_terracotta []",
     (118, 70, 86): "purple_terracotta []",
     (143, 61, 47): "red_terracotta []",
-    (135, 107, 98): "silver_terracotta []",
+    (135, 107, 98): "light_gray_terracotta []",
     (210, 178, 161): "white_terracotta []",
     (186, 133, 35): "yellow_terracotta []",
     (166, 136, 38): "honeycomb_block []",
@@ -171,7 +171,7 @@ DETAILED_STATIC: Final = {
     (222, 169, 47): "raw_gold_block []",
     (166, 136, 107): "raw_iron_block []",
     (70, 7, 9): "red_nether_brick []",
-    (95, 55, 30): "redstone_lamp_off []",
+    (95, 55, 30): "redstone_lamp []",
     (140, 110, 110): "redstone_ore []",
     (241, 147, 71): "shroomlight []",
     (112, 192, 92): "slime []",
@@ -218,7 +218,7 @@ DETAILED_STATIC: Final = {
     (238, 141, 172): "pink_wool []",
     (122, 42, 173): "purple_wool []",
     (161, 39, 35): "red_wool []",
-    (142, 142, 135): "silver_wool []",
+    (142, 142, 135): "light_gray_wool []",
     (234, 236, 237): "white_wool []",
     (249, 198, 40): "yellow_wool []",
 }
@@ -226,3 +226,42 @@ DETAILED_STATIC: Final = {
 A detailed palette consisting of static blocks (blocks that always have only
 exactly one variant) optimal for pixel arts.
 """
+
+def _check_server() -> None:
+    import asyncio
+    import sys
+    
+    from bedrock import Server
+    from bedrock.context import ConnectContext, ReadyContext
+    from bedrock.ext import ui
+
+    secs = 10
+    message = f"Attention: This server might destroy the world. You have {secs} seconds to disconnect."
+
+    server = Server()
+
+    @server.server_event
+    async def ready(ctx: ReadyContext) -> None:
+        print(f"Ready @ {ctx.host}:{ctx.port}")
+    
+    @server.server_event
+    async def connect(ctx: ConnectContext) -> None:
+        await ctx.server.run(
+            f"say {ui.red(message)}"
+        )
+        await asyncio.sleep(secs)
+        blocks = [*DETAILED_MAP.values(), *DETAILED_STATIC.values()]
+        errors = 0
+        total = len(blocks)
+        
+        for i, block in enumerate(blocks, start=1):
+            response = await ctx.server.run(f"setblock ~1 ~ ~ {block}")
+            await ctx.server.run(f"title @s actionbar {i}/{total}", wait=False)
+            if not response.ok:
+                print(f"Failed to place block {block!r}: {response.message}", file=sys.stderr)
+                await ctx.server.run(f"say {ui.gold:Block failed to place. See console for more information.}", wait=False)
+                errors += 1
+
+        print(f"{errors}/{total} blocks failed to place")
+
+    server.start("0.0.0.0", 6464)

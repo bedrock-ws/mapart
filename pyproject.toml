@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mapart"
-version = "0.2.1"
+version = "0.2.2"
 description = "Create map arts in Minecraft BE worlds"
 authors = ["Jonas da Silva <phoenixr41414141@gmail.com>"]
 maintainers = ["Jonas da Silva <phoenixr41414141@gmail.com>"]
@@ -28,6 +28,7 @@ classifiers = [
 
 [tool.poetry.scripts]
 mapart = "mapart.__main__:app"
+mapart-palette-check = "mapart.palettes:_check_server"
 
 [tool.poetry.dependencies]
 python = "^3.11"

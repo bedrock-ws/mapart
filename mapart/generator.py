@@ -67,7 +67,7 @@ def launch(address: str, port: int, palette_id: str, root_dir: Path) -> None:
             await ctx.reply(ui.red("Error: The provided path does not exist"))
             return
         if not path.is_file():
-            await ctx.reply(ui.red("Error: The provided points to a path"))
+            await ctx.reply(ui.red("Error: The provided path does not point to a file"))
             return
 
         im = Image.open(path).convert("RGB")

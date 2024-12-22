@@ -76,8 +76,11 @@ def launch(address: str, port: int, palette_id: str, root_dir: Path) -> None:
         im = pixelate(im)
 
         await ctx.server.run(f"inputpermission set {ctx.sender} movement disabled")
+        tickingarea_name = "mapart_tmp"
+        await ctx.server.run(f"tickingarea add ~ ~-1 ~ ~{MAP_SIZE} ~-1 ~{MAP_SIZE} {tickingarea_name}")
         x = z = 1
-        for (r, g, b) in im.getdata():
+        pixels = im.getdata()
+        for (i, (r, g, b)) in enumerate(pixels):
             closest_rgb = rgbmatch.closest_rgb((r, g, b), palette.keys())
             block = palette[closest_rgb]
             await ctx.server.run(
@@ -91,7 +94,12 @@ def launch(address: str, port: int, palette_id: str, root_dir: Path) -> None:
             else:
                 x += 1
 
+            progress = i/len(pixels)
+            print(f"Progress: {round(progress * 100)}%", end="\r")
+
+        print()
         await ctx.reply(ui.green("Success: Done placing image"))
         await ctx.server.run(f"inputpermission set {ctx.sender} movement enabled")
+        await ctx.server.run(f"tickingarea remove {tickingarea_name}")
 
     server.start(address, port)

@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.3][] - 2024-12-22
+
+### Added
+
+- ℹ️ Added status bar.
+
+### Changes
+
+- ✨ Area is now always loaded.
+
+
 ## [0.2.2][] - 2024-09-30
 
 ### Added
